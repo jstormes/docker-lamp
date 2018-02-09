@@ -25,8 +25,10 @@ CRON_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
 if [ -z "$MY_ROOT_PW" ]; then
+    echo "Setting MySQL Password";
     sleep 10
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MY_ROOT_PW');" | mysql -pnaked
+    unset MY_ROOT_PW
 fi
 
 echo "**************************************************"
