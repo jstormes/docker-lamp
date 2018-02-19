@@ -33,6 +33,7 @@ echo "**************************************************"
 echo "* LAMP Server is ready "
 echo "* Server IP address is $(hostname -i) "
 echo "**************************************************"
+echo $@
 
 while /bin/true; do
 
