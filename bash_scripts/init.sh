@@ -35,8 +35,8 @@ echo "* Server IP address is $(hostname -i) "
 echo "**************************************************"
 echo $@
 
-if [ $@ = "bash" ]; then
-    exec bash
+if [ -z "$@" ]; then
+    exec $@
 fi
 
 while /bin/true; do
