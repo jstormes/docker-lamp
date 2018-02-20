@@ -30,7 +30,9 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
        	} | debconf-set-selections \
     && apt-get install -y cron mariadb-server \
     && chmod +x /tini \
-    && chmod +x /etc/init.sh
+    && chmod +x /etc/init.sh \
+    && rm -rf /var/lib/apt/lists/*
+
 
 WORKDIR /var/www
 EXPOSE 443 80 3306

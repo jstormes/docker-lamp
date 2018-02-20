@@ -35,6 +35,10 @@ echo "* Server IP address is $(hostname -i) "
 echo "**************************************************"
 echo $@
 
+if [ $@ = "bash" ]; then
+    exec bash
+fi
+
 while /bin/true; do
 
   if ! ps -p $MYSQL_PID > /dev/null
