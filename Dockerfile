@@ -6,7 +6,7 @@
 #
 # Breaking the law, breaking the law ...
 #
-# This is intended for development but also allows less experienced
+# This is intended for development, but it also allows less experienced
 # system operators to deploy to system like QNAP NAS server as one
 # container, without having to understand how to connect and
 # maintain separate services.
@@ -31,6 +31,9 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
     && apt-get install -y cron mariadb-server \
     && chmod +x /tini \
     && chmod +x /etc/init.sh \
+    && rm -f /var/log/apache2/access.log \
+    && rm -f /var/log/apache2/error.log \
+    && rm -f /var/log/apache2/other_vhosts_access.log \
     && rm -rf /var/lib/apt/lists/*
 
 

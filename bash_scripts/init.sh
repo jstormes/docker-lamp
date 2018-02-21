@@ -6,23 +6,38 @@
 #
 # Breaking the law, breaking the law ...
 #
-# This is intended for development but also allows less experienced
+# This is intended for development. It also allows less experienced
 # system operators to deploy to system like QNAP NAS server as one
 # container, without having to understand how to connect and
 # maintain separate services.
 #
 
+if [ $# -eq 0 ]; then
+    echo "Redirecting logs to stdout and stderr"
+    ln -nsf /dev/stdout /var/log/apache2/access.log
+    ln -nsf /dev/stderr /var/log/apache2/error.log
+    ln -nsf /dev/stderr /var/log/apache2/other_vhosts_access.log
+    ln -nsf /dev/stdout /var/log/mysql.log
+    ln -nsf /dev/stderr /var/log/mysql.err
+fi
+
+echo "Starting MariaDb"
 mysqld_safe &
 MYSQL_PID=$!
 
+echo "Starting Apache"
 apachectl -DFOREGROUND &
 APACHE_PID=$!
 
+echo "Starting Cron"
 /usr/sbin/cron -f &
 CRON_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
-if [ -z "$MY_ROOT_PW" ]; then
+echo "Checking for MariaDb password"
+if [ -z "${MY_ROOT_PW}" ]; then
+    echo "No MariaDb root password passed, you should pass a new password via the MY_ROOT_PW variable";
+else
     echo "Setting MySQL Password";
     sleep 2
     echo "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$MY_ROOT_PW');" | mysql -pnaked
@@ -33,10 +48,10 @@ echo "**************************************************"
 echo "* LAMP Server is ready "
 echo "* Server IP address is $(hostname -i) "
 echo "**************************************************"
-echo $@
 
-if [ -z "$@" ]; then
-    exec $@
+if [ $# -ne 0 ]; then
+    echo "running ${@}"
+    exec "$@"
 fi
 
 while /bin/true; do
