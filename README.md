@@ -17,4 +17,8 @@ Windows CMD
 
 Open your browser to [http://localhost:8080](http://localhost:8080)
 
+
+  To get a bash shell into the docker container add bash to the end of any
+of the above.
+
 To stop the Docker Container pres [Ctl]-C in the console.
