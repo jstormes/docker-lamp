@@ -54,6 +54,14 @@ if [ $# -ne 0 ]; then
     exec "$@"
 fi
 
+echo "Checking for startup script"
+if [ -z "${START_SCRIPT}" ]; then
+    echo "No START_SCRIPT set.";
+else
+    echo "START_SCRIPT set trying to run.";
+    ${START_SCRIPT}
+fi
+
 while /bin/true; do
 
   if ! ps -p $MYSQL_PID > /dev/null
