@@ -54,12 +54,12 @@ if [ $# -ne 0 ]; then
     exec "$@"
 fi
 
-echo "Checking for startup script"
-if [ -z "${START_SCRIPT}" ]; then
-    echo "No START_SCRIPT set.";
+echo "Checking for startup scripts directory"
+if [ -z "${START_SCRIPT_PATH}" ]; then
+    echo "No START_SCRIPT_PATH set.";
 else
-    echo "START_SCRIPT set trying to run.";
-    ${START_SCRIPT}
+    echo "START_SCRIPT_PATH set trying to run.";
+    run-parts  ${START_SCRIPT_PATH}
 fi
 
 while /bin/true; do
