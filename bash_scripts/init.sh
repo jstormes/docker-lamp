@@ -13,7 +13,7 @@
 #
 
 if [ $# -eq 0 ]; then
-    echo "Redirecting logs to stdout and stderr"
+    echo "No command passed, redirecting logs to stdout and stderr"
     ln -nsf /dev/stdout /var/log/apache2/access.log
     ln -nsf /dev/stderr /var/log/apache2/error.log
     ln -nsf /dev/stderr /var/log/apache2/other_vhosts_access.log
