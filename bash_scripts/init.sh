@@ -54,7 +54,8 @@ if [ $# -ne 0 ]; then
     exec "$@"
 fi
 
-echo "Checking for startup scripts directory"
+echo "Checking for startup scripts"
+run-parts /etc/start
 if [ -z "${START_SCRIPT_PATH}" ]; then
     echo "No START_SCRIPT_PATH set.";
 else
