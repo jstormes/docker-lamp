@@ -34,6 +34,8 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
     && rm -f /var/log/apache2/access.log \
     && rm -f /var/log/apache2/error.log \
     && rm -f /var/log/apache2/other_vhosts_access.log \
+    && apt-get autoremove \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 
