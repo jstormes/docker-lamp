@@ -1,6 +1,8 @@
 # docker-lamp
 A Docker container with Linux, Apache, MariaDb, PHP and Cron.  For deploying thick containers.
 
+---
+
 # Quick Start Examples
 
   This examples will serve your current directory on port 8080 so [http://localhost:8080](http://localhost:8080).  
@@ -19,6 +21,7 @@ A Docker container with Linux, Apache, MariaDb, PHP and Cron.  For deploying thi
 
 ```docker run -rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp```
 
+---
 
 # Quick Start with Interactive Bash inside the container
 
@@ -41,6 +44,7 @@ will also drop you into a bash prompt inside the docker container.  It will use 
 
 ```docker run -rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp bash```
 
+---
 
 # Quick Start PHP 5.X with Interactive Bash inside the container
 
