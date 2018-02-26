@@ -11,7 +11,7 @@
 # container, without having to understand how to connect and
 # maintain separate services.
 #
-FROM php:7.1-apache
+FROM php:5-apache
 MAINTAINER James Stormes <jstormes@stormes.net>
 
 # Add Tini
