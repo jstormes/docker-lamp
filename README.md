@@ -11,15 +11,15 @@ A Docker container with Linux, Apache, MariaDb, PHP and Cron.  For deploying thi
 
 ### BASH (Linux/Mac OS X):
 
-```docker run -rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp```
+```docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp```
 
 ### PowerShell (Windows)
 
-```docker run -rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp```
+```docker run --rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp```
 
 ### Windows CMD (Windows CMD)
 
-```docker run -rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp```
+```docker run --rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp```
 
 ---
 
@@ -34,15 +34,15 @@ will also drop you into a bash prompt inside the docker container.  It will use 
 
 ### BASH (Linux/Mac OS X):
 
-```docker run -rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp bash```
+```docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp bash```
 
 ### PowerShell (Windows)
 
-```docker run -rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp bash```
+```docker run --rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp bash```
 
 ### Windows CMD (Windows CMD)
 
-```docker run -rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp bash```
+```docker run --rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp bash```
 
 ---
 
@@ -57,15 +57,15 @@ will also drop you into a bash prompt inside the docker container.  It will use 
 
 ### BASH (Linux/Mac OS X):
 
-```docker run -rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp:5 bash```
+```docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp:5 bash```
 
 ### PowerShell (Windows)
 
-```docker run -rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp:5 bash```
+```docker run --rm -it -p 8080:80 -v ${PWD}:/var/www/html jstormes/lamp:5 bash```
 
 ### Windows CMD (Windows CMD)
 
-```docker run -rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp:5 bash```
+```docker run --rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp:5 bash```
 
 
 
