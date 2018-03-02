@@ -31,7 +31,7 @@ apachectl -DFOREGROUND &
 APACHE_PID=$!
 
 echo "Starting Cron"
-/usr/sbin/cron -n &
+/usr/sbin/cron -f &
 CRON_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
