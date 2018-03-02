@@ -19,6 +19,7 @@ if [ $# -eq 0 ]; then
     ln -nsf /dev/stderr /var/log/apache2/other_vhosts_access.log
     ln -nsf /dev/stdout /var/log/mysql.log
     ln -nsf /dev/stderr /var/log/mysql.err
+    ln -nsf /dev/stdout /var/log/cron.log
 fi
 
 echo "Starting MariaDb"
@@ -30,7 +31,7 @@ apachectl -DFOREGROUND &
 APACHE_PID=$!
 
 echo "Starting Cron"
-/usr/sbin/cron -f &
+/usr/sbin/cron -n &
 CRON_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
