@@ -28,7 +28,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
        		echo "mariadb-server" mysql-server/root_password password 'naked'; \
        		echo "mariadb-server" mysql-server/root_password_again password 'naked'; \
        	} | debconf-set-selections \
-    && apt-get install -y cron mariadb-server \
+    && apt-get install -y cron mariadb-server at \
     && chmod +x /tini \
     && chmod +x /etc/init.sh \
     && rm -f /var/log/apache2/access.log \

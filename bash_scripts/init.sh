@@ -31,8 +31,12 @@ apachectl -DFOREGROUND &
 APACHE_PID=$!
 
 echo "Starting Cron"
-/usr/sbin/cron -f 2>&1 /var/log/cron.log &
+/usr/sbin/cron -f &
 CRON_PID=$!
+
+echo "Starting at"
+/usr/sbin/atd &
+AT_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
 echo "Checking for MariaDb password"
@@ -81,6 +85,12 @@ while /bin/true; do
   if ! ps -p $CRON_PID > /dev/null
   then
     echo "Cron died!!!"
+    exit -1
+  fi
+
+  if ! ps -p $AT_PID > /dev/null
+  then
+    echo "At died!!!"
     exit -1
   fi
 
