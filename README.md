@@ -5,10 +5,6 @@ A Docker container with Linux, Apache, MariaDb, PHP and Cron.  For deploying thi
 
 # Quick Start Examples
 
-  This examples will serve your current directory on port 8080 so [http://localhost:8080](http://localhost:8080).  
-
-  Press `[Ctl-C]` to stop the docker container.
-
 ### BASH (Linux/Mac OS X):
 
 ```docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html jstormes/lamp```
@@ -21,6 +17,13 @@ A Docker container with Linux, Apache, MariaDb, PHP and Cron.  For deploying thi
 
 ```docker run --rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp```
 
+
+### Using the Container
+
+  These examples will serve your current directory on port 8080 so [http://localhost:8080](http://localhost:8080).  
+
+  Press `[Ctl-C]` to stop the docker container.
+  
 ---
 
 # Quick Start with Interactive Bash inside the container
