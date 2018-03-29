@@ -88,11 +88,12 @@ while /bin/true; do
     exit -1
   fi
 
-  if ! ps -p $AT_PID > /dev/null
-  then
-    echo "At died!!!"
-    exit -1
-  fi
+# At appears to re-spawn itself under a different PID, I miss `systemd`.
+#  if ! ps -p $AT_PID > /dev/null
+#  then
+#    echo "At died!!!"
+#    exit -1
+#  fi
 
   sleep 5
 done
