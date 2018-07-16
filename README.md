@@ -51,6 +51,8 @@ will also drop you into a bash prompt inside the docker container.  It will use 
 
 # Quick Start PHP 5.X with Interactive Bash inside the container
 
+**_PHP 5.X is no longer supported!!!!!_**
+
   This examples will serve your current directory on port 8080 so [http://localhost:8080](http://localhost:8080).  It 
 will also drop you into a bash prompt inside the docker container.  It will use the latest 5.X version of PHP.
 
@@ -70,5 +72,15 @@ will also drop you into a bash prompt inside the docker container.  It will use 
 
 ```docker run --rm -it -p 8080:80 -v %cd%:/var/www/html jstormes/lamp:5 bash```
 
+# Auto-starting scripts
 
+You can setup scripts to auto start by setting the `START_SCRIPT_PATH` environment variable.  You need to 
+set this path to the _directory_ containing your startup scripts.
 
+```
+docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html -e START_SCRIPT_PATH='/var/www/start' jstormes/lamp bash
+```
+
+The above command would search the directory /var/www/start and run any shell script it finds there using the
+`run-parts` command.  
+See [http://manpages.ubuntu.com/manpages/cosmic/man8/run-parts.8.html](http://manpages.ubuntu.com/manpages/cosmic/man8/run-parts.8.html).
