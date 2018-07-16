@@ -84,3 +84,8 @@ docker run --rm -it -p 8080:80 -v $(pwd):/var/www/html -e START_SCRIPT_PATH='/va
 The above command would search the directory /var/www/start and run any shell script it finds there using the
 `run-parts` command.  
 See [http://manpages.ubuntu.com/manpages/cosmic/man8/run-parts.8.html](http://manpages.ubuntu.com/manpages/cosmic/man8/run-parts.8.html).
+
+# MariaDB (MySQL) in the Container
+
+This image also will run a copy of MariaDB on startup.  The `root` password is `naked`.  You can access
+the cli interface by running mysql at the command prompt.
