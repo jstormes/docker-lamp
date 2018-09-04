@@ -54,11 +54,6 @@ echo "* LAMP Server is ready "
 echo "* Server IP address is $(hostname -i) "
 echo "**************************************************"
 
-if [ $# -ne 0 ]; then
-    echo "running ${@}"
-    exec "$@"
-fi
-
 echo "Checking for startup scripts"
 run-parts /etc/start
 if [ -z "${START_SCRIPT_PATH}" ]; then
@@ -66,6 +61,11 @@ if [ -z "${START_SCRIPT_PATH}" ]; then
 else
     echo "START_SCRIPT_PATH set trying to run.";
     run-parts  ${START_SCRIPT_PATH}
+fi
+
+if [ $# -ne 0 ]; then
+    echo "running ${@}"
+    exec "$@"
 fi
 
 while /bin/true; do
