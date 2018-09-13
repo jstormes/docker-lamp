@@ -22,6 +22,8 @@ if [ $# -eq 0 ]; then
 #    ln -nsf /dev/stdout /var/log/cron.log
 fi
 
+
+
 echo "Starting MariaDb"
 mysqld_safe &
 MYSQL_PID=$!
@@ -37,6 +39,10 @@ CRON_PID=$!
 echo "Starting at"
 /usr/sbin/atd &
 AT_PID=$!
+
+echo "Starting Redis"
+/usr/bin/redis-server &
+REDIS_PID=$!
 
 # A Hack to set the root password for MariaDb/MySQL
 echo "Checking for MariaDb password"
