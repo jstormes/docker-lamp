@@ -44,6 +44,10 @@ echo "Starting Redis"
 /usr/bin/redis-server &
 REDIS_PID=$!
 
+echo "Starting OpenLDAP"
+/usr/sbin/slapd &
+LDAP_PID=$!
+
 # A Hack to set the root password for MariaDb/MySQL
 echo "Checking for MariaDb password"
 if [ -z "${MY_ROOT_PW}" ]; then

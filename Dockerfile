@@ -6,10 +6,7 @@
 #
 # Breaking the law, breaking the law ...
 #
-# This is intended for development, but it also allows less experienced
-# system operators to deploy to system like QNAP NAS server as one
-# container, without having to understand how to connect and
-# maintain separate services.
+# This is intended for DEVELOPMENT ONLY!
 #
 FROM php:7-apache
 MAINTAINER James Stormes <jstormes@stormes.net>
@@ -27,8 +24,21 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
     && { \
        		echo "mariadb-server" mysql-server/root_password password 'naked'; \
        		echo "mariadb-server" mysql-server/root_password_again password 'naked'; \
+       		echo "slapd slapd/root_password password naked";  \
+            echo "slapd slapd/root_password_again password naked"; \
+            echo "slapd slapd/internal/adminpw password naked"; \
+            echo "slapd slapd/internal/generated_adminpw password naked"; \
+            echo "slapd slapd/password2 password naked"; \
+            echo "slapd slapd/password1 password naked";  \
+            echo "slapd slapd/domain string loopback.world"; \
+            echo "slapd shared/organization string loopback"; \
+            echo "slapd slapd/backend string HDB"; \
+            echo "slapd slapd/purge_database boolean true"; \
+            echo "slapd slapd/move_old_database boolean false"; \
+            echo "slapd slapd/allow_ldap_v2 boolean false"; \
+            echo "slapd slapd/no_configuration boolean false"; \
        	} | debconf-set-selections \
-    && apt-get install -y cron mariadb-server at redis-server \
+    && apt-get install -y cron mariadb-server at redis-server slapd ldap-utils ldapscripts \
     && chmod +x /tini \
     && chmod +x /etc/init.sh \
     && rm -f /var/log/apache2/access.log \
