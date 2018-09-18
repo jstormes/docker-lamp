@@ -23,6 +23,8 @@ if [ $# -eq 0 ]; then
 fi
 
 
+echo "starting Syslog NG"
+service  syslog-ng start
 
 echo "Starting MariaDb"
 mysqld_safe &
@@ -47,8 +49,6 @@ REDIS_PID=$!
 echo "Starting OpenLDAP"
 service slapd start
 
-echo "starting Syslog NG"
-service  syslog-ng start
 
 # A Hack to set the root password for MariaDb/MySQL
 echo "Checking for MariaDb password"
