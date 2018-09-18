@@ -38,7 +38,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli \
             echo "slapd slapd/allow_ldap_v2 boolean false"; \
             echo "slapd slapd/no_configuration boolean false"; \
        	} | debconf-set-selections \
-    && apt-get install -y cron mariadb-server at redis-server slapd ldap-utils ldapscripts \
+    && apt-get install -y cron mariadb-server at redis-server slapd ldap-utils ldapscripts syslog-ng-core \
     && chmod +x /tini \
     && chmod +x /etc/init.sh \
     && rm -f /var/log/apache2/access.log \

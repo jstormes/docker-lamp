@@ -45,8 +45,10 @@ echo "Starting Redis"
 REDIS_PID=$!
 
 echo "Starting OpenLDAP"
-/usr/sbin/slapd &
-LDAP_PID=$!
+service slapd start
+
+echo "starting Syslog NG"
+service  syslog-ng start
 
 # A Hack to set the root password for MariaDb/MySQL
 echo "Checking for MariaDb password"
